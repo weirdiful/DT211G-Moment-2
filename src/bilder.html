@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="js/script.js" ></script>
+    <title>Document</title>
+    
+</head>
+<body>
+
+
+    <header class="header"> 
+            
+        <div class="header-links">
+            <a href="index.html">STARTSIDA</a>
+            <a href="about.html">ARBETSPROCESS</a>
+            <a href="bilder.html">BILDER</a>
+            </a>
+        </div>
+
+    <div class="mobile-icons">
+        <button class="openbtn" onclick="openNav()"><strong>&#x2630;</strong>
+        </button>
+    </div>
+         
+        </header>
+
+        <div id="menu" class="menubar">   
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a href="index.html">STARTSIDA</a>
+            <a href="about.html">ARBETSPROCESS</a>
+            <a href="bilder.html">BILDER</a>
+            </a> 
+            
+        </div> 
+
+
+
+        <picture class="myImg">
+            <source srcset="img/img1.jpeg?as=webp&width=400" type="image/webp">
+            <source srcset="img/img1.jpeg?as=avif&width=400" type="image/avif">
+            <img src="img/img1.jpeg" alt="Omotesando street in Harajuku" style="width:100%;max-width:300px">
+        </picture>
+
+            <picture>
+                <source srcset="img/img2.jpeg?as=webp&width=400" type="image/webp">
+                <source srcset="img/img2.jpeg?as=avif&width=400" type="image/avif">
+                <img class="myImg" src="img/img2.jpeg" alt="Osaka Dotonburi" style="width:100%;max-width:300px">
+            </picture>
+
+            <picture>
+                <source srcset="img/img3.jpeg?as=webp&width=400" type="image/webp">
+                <source srcset="img/img3.jpeg?as=avif&width=400" type="image/avif">
+                <img class="myImg" src="img/img3.jpeg" alt="Osaka by night" style="width:100%;max-width:300px">
+            </picture>
+
+            <picture>
+                <source srcset="img/img4.jpeg?as=webp&width=400" type="image/webp">
+                <source srcset="img/img4.jpeg?as=avif&width=400" type="image/avif">
+                <img class="myImg" src="img/img4.jpeg" alt="Shibuya crossing night" style="width:100%;max-width:300px">
+            </picture>
+
+            <picture>
+                <source srcset="img/img5.jpeg?as=webp&width=400" type="image/webp">
+                <source srcset="img/img5.jpeg?as=avif&width=400" type="image/avif">
+                <img class="myImg" src="img/img5.jpeg" alt="Nishiki market Kyoto" style="width:100%;max-width:300px">
+            </picture>
+
+<div class="myModal" class="modal">
+
+ 
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+    
+  
+  
+
+     
+</body>
+</html>

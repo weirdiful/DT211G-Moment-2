@@ -1,0 +1,2 @@
+let e=document.getElementById("myModal"),t=document.getElementById("img01"),n=document.getElementById("caption");document.querySelectorAll(".myImg, .myImg img").forEach(function(c){c.onclick=function(){e.style.display="block","picture"==this.tagName.toLowerCase()?(t.src=this.querySelector("img").src,n.innerHTML=this.querySelector("img").alt):(t.src=this.src,n.innerHTML=this.alt)}}),document.getElementsByClassName("close")[0].onclick=function(){e.style.display="none"},e.onclick=function(t){t.target===e&&(e.style.display="none")};
+//# sourceMappingURL=index.45c9ba56.js.map

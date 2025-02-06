@@ -1,0 +1,224 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(198, 249, 249);
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+}
+
+
+.header {
+    position: relative;
+    background-color: teal;
+    padding: 20px 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menubar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: teal;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.menubar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.menubar a:hover, .menubar img:hover {
+    color: aqua;
+}
+
+.menubar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-right: 50px;
+}
+
+.header-links {
+    display: flex;
+    gap: 20px;
+    margin-right: 2rem;
+}
+
+.header-links a {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.header-links a:hover {
+    background-color: aqua;
+}
+
+.openbtn {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 2.5rem;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.openbtn:hover {
+    background-color: aqua;
+}
+
+.mobile-icons {
+    display: none;
+}
+
+
+.active {
+    background-color: aqua;
+}
+
+.header-links a.active {
+    background-color: aqua;
+}
+
+/*Startsida*/
+
+.start-heading {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.start-info {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.start-info h2 {
+    margin-bottom: 10px;
+}
+
+.start-info ul {
+    list-style-type: disc; 
+    margin-left: 20px; 
+    padding-left: 20px;
+}
+
+.start-info li {
+    margin-bottom: 8px; 
+}
+
+
+/*Modal*/
+.myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.myImg:hover {
+    opacity: 0.7;
+}
+  
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.9); 
+  }
+  
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+  
+  .modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
+  
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  @media only screen and (max-width: 700px){
+    .modal-content {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .product-row {
+        flex-direction: column;
+    }
+
+    .header-links {
+        display: none;
+    }
+
+    .mobile-icons {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin-right: 1rem;
+    }
+
+
+}
+
+
