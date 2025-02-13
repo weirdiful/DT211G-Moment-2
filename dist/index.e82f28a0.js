@@ -631,6 +631,29 @@ function openNav() {
 function closeNav() {
     document.getElementById("menu").style.width = "0";
 }
+document.addEventListener("DOMContentLoaded", ()=>{
+    fetch('.data/courses.json').then((response)=>{
+        if (!response.ok) throw new Error("N\xe4tverksfel vid h\xe4mtning");
+        return response.json();
+    }).then((data)=>{
+        displayCourses(data);
+    }).catch((error)=>console.error("Fel vid h\xe4mtning:", error));
+});
+// Funktion för att visa kurser på sidan
+function displayCourses(courses) {
+    const courseContainer = document.getElementById("course-list");
+    courseContainer.innerHTML = "";
+    courses.forEach((course)=>{
+        const courseElement = document.createElement("div");
+        courseElement.classList.add("course");
+        courseElement.innerHTML = `
+          <h3>${course.coursename} (${course.code})</h3>
+          <p>Progression: ${course.progression}</p>
+          <a href="${course.syllabus}" target="_blank">Kursplan</a>
+      `;
+        courseContainer.appendChild(courseElement);
+    });
+}
 
 },{}]},["aDUUU","dV6cC"], "dV6cC", "parcelRequire94c2")
 
