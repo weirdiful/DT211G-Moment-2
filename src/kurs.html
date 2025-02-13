@@ -32,9 +32,31 @@
     
         </div> 
 
+        <script>
+            function openNav() {
+                document.getElementById("menu").style.width = "250px";
+              
+              }
+              
+              function closeNav() {
+                document.getElementById("menu").style.width = "0";
+              }
+        </script>
+
 <div>
     <h1>Kurser</h1>
-    <div id="course-list"></div>
+    <table id="course-table">
+        <thead>
+            <tr>
+                <th>Kursnamn</th>
+                <th>Kod</th>
+                <th>Progression</th>
+                <th>Kursplan</th>
+            </tr>
+        </thead>
+        <tbody id="course-list">
+        </tbody>
+    </table>
 
 </div>
 
