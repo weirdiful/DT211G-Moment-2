@@ -43,12 +43,15 @@ function closeNav() {
 
 <div>
     <h1>Kurser</h1>
-    <table id="course-table">
+    <input type="text" id="searchInput" placeholder="Sök kurskod eller kursnamn...">
+
+
+    <table>
         <thead>
             <tr>
-                <th>Kursnamn</th>
-                <th>Kod</th>
-                <th>Progression</th>
+                <th data-sort="coursename">Kursnamn:</th>
+                <th data-sort="code">Kurskod:</th>
+                <th data-sort="progression">Progression:</th>
                 <th>Kursplan</th>
             </tr>
         </thead>

@@ -628,28 +628,62 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 //     }
 // };
 document.addEventListener("DOMContentLoaded", ()=>{
-    fetch('courses.json').then((response)=>{
+    let courses = [];
+    let currentSort = {
+        column: null,
+        ascending: true
+    };
+    // Hämta JSON-data
+    fetch('https://webbutveckling.miun.se/files/ramschema_ht24.json').then((response)=>{
         if (!response.ok) throw new Error("N\xe4tverksfel vid h\xe4mtning");
         return response.json();
     }).then((data)=>{
-        displayCourses(data);
+        courses = data;
+        displayCourses(courses);
     }).catch((error)=>console.error("Fel vid h\xe4mtning:", error));
-});
-// Funktion för att visa kurser i en tabell
-function displayCourses(courses) {
-    const courseContainer = document.getElementById("course-list");
-    courseContainer.innerHTML = "";
-    courses.forEach((course)=>{
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${course.coursename}</td>
-          <td>${course.code}</td>
-          <td>${course.progression}</td>
-          <td><a href="${course.syllabus}" target="_blank">Kursplan</a></td>
-      `;
-        courseContainer.appendChild(row);
+    // Visa kurser 
+    function displayCourses(data) {
+        const courseContainer = document.getElementById("course-list");
+        courseContainer.innerHTML = "";
+        data.forEach((course)=>{
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${course.coursename}</td>
+              <td>${course.code}</td>
+              <td>${course.progression}</td>
+              <td><a href="${course.syllabus}" target="_blank">Kursplan</a></td>
+          `;
+            courseContainer.appendChild(row);
+        });
+    }
+    //Sorteringsfunktion
+    function sortCourses(column) {
+        if (currentSort.column === column) currentSort.ascending = !currentSort.ascending;
+        else {
+            currentSort.column = column;
+            currentSort.ascending = true;
+        }
+        const sortedData = [
+            ...courses
+        ].sort((a, b)=>{
+            if (a[column] < b[column]) return currentSort.ascending ? -1 : 1;
+            if (a[column] > b[column]) return currentSort.ascending ? 1 : -1;
+            return 0;
+        });
+        displayCourses(sortedData);
+    }
+    //  Filtreringsfunktion
+    function filterCourses(event) {
+        const searchText = event.target.value.toLowerCase();
+        const filteredData = courses.filter((course)=>course.code.toLowerCase().includes(searchText) || course.coursename.toLowerCase().includes(searchText));
+        displayCourses(filteredData);
+    }
+    // Event Listeners
+    document.getElementById("searchInput").addEventListener("input", filterCourses);
+    document.querySelectorAll("th[data-sort]").forEach((header)=>{
+        header.addEventListener("click", ()=>sortCourses(header.dataset.sort));
     });
-}
+});
 
 },{}]},["aDUUU","dV6cC"], "dV6cC", "parcelRequire94c2")
 
