@@ -634,13 +634,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
         ascending: true
     };
     // Hämta JSON-data
-    fetch('https://webbutveckling.miun.se/files/ramschema_ht24.json').then((response)=>{
-        if (!response.ok) throw new Error("N\xe4tverksfel vid h\xe4mtning");
-        return response.json();
-    }).then((data)=>{
-        courses = data;
-        displayCourses(courses);
-    }).catch((error)=>console.error("Fel vid h\xe4mtning:", error));
+    async function fetchCourses() {
+        try {
+            const response = await fetch('https://webbutveckling.miun.se/files/ramschema_ht24.json');
+            if (!response.ok) throw new Error("N\xe4tverksfel vid h\xe4mtning");
+            courses = await response.json();
+            displayCourses(courses);
+        } catch (error) {
+            console.error("Fel vid h\xe4mtning:", error);
+        }
+    }
     // Visa kurser 
     function displayCourses(data) {
         const courseContainer = document.getElementById("course-list");
@@ -683,6 +686,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     document.querySelectorAll("th[data-sort]").forEach((header)=>{
         header.addEventListener("click", ()=>sortCourses(header.dataset.sort));
     });
+    fetchCourses();
 });
 
 },{}]},["aDUUU","dV6cC"], "dV6cC", "parcelRequire94c2")

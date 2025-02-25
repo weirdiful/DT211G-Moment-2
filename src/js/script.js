@@ -46,16 +46,17 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentSort = { column: null, ascending: true };
 
   // Hämta JSON-data
-  fetch('https://webbutveckling.miun.se/files/ramschema_ht24.json')
-      .then(response => {
-          if (!response.ok) throw new Error("Nätverksfel vid hämtning");
-          return response.json();
-      })
-      .then(data => {
-          courses = data;
-          displayCourses(courses);
-      })
-      .catch(error => console.error("Fel vid hämtning:", error));
+  async function fetchCourses() {
+    try {
+        const response = await fetch('https://webbutveckling.miun.se/files/ramschema_ht24.json');
+        if (!response.ok) throw new Error("Nätverksfel vid hämtning");
+
+        courses = await response.json();
+        displayCourses(courses);
+    } catch (error) {
+        console.error("Fel vid hämtning:", error);
+    }
+}
 
   // Visa kurser 
   function displayCourses(data) {
@@ -108,4 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("th[data-sort]").forEach(header => {
       header.addEventListener("click", () => sortCourses(header.dataset.sort));
   });
+
+  fetchCourses();
 });
